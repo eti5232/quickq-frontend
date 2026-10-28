@@ -24,9 +24,6 @@ const ClinicPage = () => {
     const clinic = query.data;
     return (
         <div className="clinic-page relative overflow-hidden">
-            <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#6C4CF4]/10 blur-3xl"></div>
-            <div className="pointer-events-none absolute -left-20 top-60 h-72 w-72 rounded-full bg-[#FF5D7A]/10 blur-3xl"></div>
-
             <div className="relative mx-auto w-full max-w-5xl px-5 pb-14 pt-6 text-right">
                 <Link className="group mb-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#6B6880] transition hover:text-[#6C4CF4]" to="/clinics">
                     <svg className="transition group-hover:translate-x-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 6 6 6-6 6" /></svg>
@@ -34,7 +31,7 @@ const ClinicPage = () => {
                 </Link>
 
                 <div className="flex flex-wrap items-center gap-4">
-                    <div className="grid h-[68px] w-[68px] shrink-0 place-items-center rounded-[22px] bg-gradient-to-br from-[#6C4CF4] to-[#8E73FF] text-white shadow-[0_12px_28px_rgba(108,76,244,.32)]">
+                    <div className="grid h-[68px] w-[68px] shrink-0 place-items-center rounded-[18px] bg-[#6C4CF4] text-white">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M3 21h18" />
                             <path d="M9 12h6" />
@@ -57,12 +54,12 @@ const ClinicPage = () => {
                 </div>
 
                 <div className="mt-6 grid gap-5 md:grid-cols-5">
-                    <section className="rounded-[24px] border border-[#EEECF4] bg-white p-6 shadow-[0_10px_30px_rgba(30,20,80,.06)] md:col-span-3">
+                    <section className="rounded-[20px] border border-[#EEECF4] bg-white p-6 md:col-span-3">
                         <h2 className="mb-3! mt-0! text-[18px]! font-bold! tracking-normal! text-[#16141F]!">על הקליניקה</h2>
                         <p className="text-[15px] leading-7 text-[#6B6880]">{clinic.description}</p>
                     </section>
 
-                    <section className="rounded-[24px] border border-[#EEECF4] bg-white p-6 shadow-[0_10px_30px_rgba(30,20,80,.06)] md:col-span-2">
+                    <section className="rounded-[20px] border border-[#EEECF4] bg-white p-6 md:col-span-2">
                         <h2 className="mb-4! mt-0! text-[18px]! font-bold! tracking-normal! text-[#16141F]!">פרטי התקשרות</h2>
                         <div className="flex flex-col gap-3.5">
                             <div className="flex items-center gap-3.5">
@@ -112,9 +109,9 @@ const ClinicPage = () => {
                     </div>
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         {clinic.providers.map(provider => (
-                            <article className="group flex flex-col gap-4 rounded-[24px] border border-[#EEECF4] bg-white p-5 shadow-[0_6px_20px_rgba(30,20,80,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#D9D5EA] hover:shadow-[0_18px_40px_rgba(108,76,244,.14)]" key={provider.id}>
+                            <article className="group flex flex-col gap-4 rounded-[20px] border border-[#EEECF4] bg-white p-5 transition hover:border-[#6C4CF4]" key={provider.id}>
                                 <div className="flex items-center gap-4">
-                                    <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[18px] bg-gradient-to-br from-[#F4F1FF] to-[#E1D8FF] text-[#6C4CF4] transition group-hover:scale-105">
+                                    <div className="grid h-14 w-14 shrink-0 place-items-center rounded-[14px] bg-[#F4F1FF] text-[#6C4CF4]">
                                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M6 4H5a2 2 0 0 0-2 2v3.5a5.5 5.5 0 0 0 11 0V6a2 2 0 0 0-2-2h-1" />
                                             <path d="M8 15a6 6 0 1 0 12 0v-3" />
@@ -135,7 +132,7 @@ const ClinicPage = () => {
                                     משך התור: {provider.slotMinutes} דקות
                                 </p>
                                 <div className="mt-auto flex flex-col gap-2.5">
-                                    <Link className="flex h-12 w-full items-center justify-center rounded-[14px] bg-[#6C4CF4] text-[15px] font-semibold text-white shadow-[0_8px_20px_rgba(108,76,244,.28)] transition hover:bg-[#5A3DDB]"
+                                    <Link className="flex h-12 w-full items-center justify-center rounded-[14px] bg-[#6C4CF4] text-[15px] font-semibold text-white shadow-[0_4px_12px_rgba(108,76,244,.22)] transition hover:bg-[#5A3DDB]"
                                         to={`/clinics/${clinic.id}/book-appointment/${provider.id}`} state={{ clinicName: clinic.name, providerName: provider.fullName }}>
                                         קביעת תור
                                     </Link>
