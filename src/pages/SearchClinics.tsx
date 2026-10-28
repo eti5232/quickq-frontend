@@ -78,7 +78,7 @@ const SearchClinics = () => {
                         </svg>
                         <input
                             className="h-14 w-full rounded-[18px] border border-transparent bg-[#FAFAFC] pr-12 pl-4 text-right text-base text-[#2B2937] outline-none transition placeholder:text-[#A3A0B5] focus:border-[#6C4CF4] focus:bg-white focus:ring-4 focus:ring-[#6C4CF4]/10"
-                            type="text" placeholder="...חפש שם קליניקה או שם רופא" value={search} onChange={(e) => {
+                            type="text" aria-label="חיפוש קליניקה או רופא" placeholder="...חפש שם קליניקה או שם רופא" value={search} onChange={(e) => {
                                 const val = e.target.value
                                 setSearch(val)
                                 updateFilter("q", val);
@@ -86,6 +86,7 @@ const SearchClinics = () => {
                     </div>
                     <select
                         className="h-14 cursor-pointer rounded-[18px] border border-transparent bg-[#FAFAFC] px-5 text-right text-base font-medium text-[#2B2937] outline-none transition hover:bg-[#F4F1FF] focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10 lg:w-52"
+                        aria-label="קטגוריה"
                         value={category ?? ""}
                         onChange={(e) => (updateFilter("category", e.target.value))}
                     >
@@ -94,6 +95,7 @@ const SearchClinics = () => {
                     </select>
                     <select
                         className="h-14 cursor-pointer rounded-[18px] border border-transparent bg-[#FAFAFC] px-5 text-right text-base font-medium text-[#2B2937] outline-none transition hover:bg-[#F4F1FF] focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10 lg:w-52"
+                        aria-label="מיון"
                         value={searchParams.get("sort") ?? ""}
                         onChange={(e) => updateFilter("sort", e.target.value)}
                     >

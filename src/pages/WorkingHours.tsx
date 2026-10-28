@@ -49,9 +49,9 @@ const WorkingHours = () => {
                         <div className="flex items-center gap-4 rounded-[16px] border border-[#EEECF4] bg-[#FAFAFC] px-4 py-3 transition focus-within:border-[#6C4CF4] focus-within:bg-white hover:border-[#D9D5EA]" key={index}>
                             <span className="w-14 shrink-0 text-[15px] font-semibold text-[#16141F]">{dayName}</span>
                             <div className="flex flex-1 items-center justify-end gap-2">
-                                <input className="h-10 w-[7.5rem] rounded-[10px] border border-[#E3E0EE] bg-white px-2 text-center text-[15px] text-[#2B2937] outline-none transition focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10" type="time" {...register(`days.${index}.startTime`)} />
+                                <input className="h-10 w-[7.5rem] rounded-[10px] border border-[#E3E0EE] bg-white px-2 text-center text-[15px] text-[#2B2937] outline-none transition focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10" type="time" aria-label={`שעת התחלה ביום ${dayName}`} {...register(`days.${index}.startTime`)} />
                                 <span className="text-[13px] text-[#A3A0B5]">עד</span>
-                                <input className="h-10 w-[7.5rem] rounded-[10px] border border-[#E3E0EE] bg-white px-2 text-center text-[15px] text-[#2B2937] outline-none transition focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10" type="time" {...register(`days.${index}.endTime`)} />
+                                <input className="h-10 w-[7.5rem] rounded-[10px] border border-[#E3E0EE] bg-white px-2 text-center text-[15px] text-[#2B2937] outline-none transition focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10" type="time" aria-label={`שעת סיום ביום ${dayName}`} {...register(`days.${index}.endTime`)} />
                             </div>
                         </div>
                     ))}

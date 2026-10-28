@@ -54,12 +54,12 @@ const ManageAppointments = () => {
                 <div className="grid gap-3 md:grid-cols-[1fr_auto]">
                     <div className="relative">
                         <svg className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#A3A0B5]" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-                        <input className="h-12 w-full rounded-[14px] border border-transparent bg-[#FAFAFC] pr-12 pl-4 text-[15px] text-[#2B2937] outline-none transition placeholder:text-[#A3A0B5] focus:border-[#6C4CF4] focus:bg-white focus:ring-4 focus:ring-[#6C4CF4]/10" type="text" placeholder="חיפוש לפי שם, טלפון או ת״ז" value={search} onChange={e => setSearch(e.target.value)} />
+                        <input className="h-12 w-full rounded-[14px] border border-transparent bg-[#FAFAFC] pr-12 pl-4 text-[15px] text-[#2B2937] outline-none transition placeholder:text-[#A3A0B5] focus:border-[#6C4CF4] focus:bg-white focus:ring-4 focus:ring-[#6C4CF4]/10" type="text" aria-label="חיפוש תורים לפי שם, טלפון או תעודת זהות" placeholder="חיפוש לפי שם, טלפון או ת״ז" value={search} onChange={e => setSearch(e.target.value)} />
                     </div>
                     <label className="flex h-12 items-center gap-3 rounded-[14px] border border-transparent bg-[#FAFAFC] px-4 text-[14px] font-medium text-[#6B6880] transition focus-within:border-[#6C4CF4] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#6C4CF4]/10">
                         <svg className="shrink-0 text-[#A3A0B5]" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M16 3v4M8 3v4M4 11h16" /></svg>
                         תאריך
-                        <input className="bg-transparent text-[15px] text-[#2B2937] outline-none" type="date" value={date} onChange={e => setDate(e.target.value)} />
+                        <input className="bg-transparent text-[15px] text-[#2B2937] outline-none" type="date" aria-label="תאריך" value={date} onChange={e => setDate(e.target.value)} />
                     </label>
                 </div>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
