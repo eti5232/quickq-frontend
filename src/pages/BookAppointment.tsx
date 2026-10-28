@@ -92,7 +92,7 @@ const BookAppointment = () => {
       </div>
 
       <div className="grid gap-5 lg:grid-cols-5">
-        <div className="flex flex-col items-center self-start rounded-[28px] border border-[#EEECF4] bg-white p-6 shadow-[0_10px_30px_rgba(30,20,80,.06)] lg:col-span-3 [&_.rdp-root]:[--rdp-accent-background-color:#F4F1FF]! [&_.rdp-root]:[--rdp-accent-color:#6C4CF4]! [&_.rdp-root]:[--rdp-today-color:#6C4CF4]! [&_.rdp-root]:[--rdp-day-height:50px]! [&_.rdp-root]:[--rdp-day-width:50px]! [&_.rdp-root]:[--rdp-day_button-height:44px]! [&_.rdp-root]:[--rdp-day_button-width:44px]! [&_.rdp-chevron]:fill-[#6C4CF4]! [&_.rdp-month\_caption]:font-semibold! [&_.rdp-month\_caption]:text-[#16141F]! [&_.rdp-selected_.rdp-day\_button]:border-[#6C4CF4]! [&_.rdp-selected_.rdp-day\_button]:bg-[#6C4CF4]! [&_.rdp-selected_.rdp-day\_button]:text-white!">
+        <div className="flex flex-col items-center self-start rounded-[28px] border border-[#EEECF4] bg-white p-6 shadow-[0_10px_30px_rgba(30,20,80,.06)] lg:col-span-3 [&_.rdp-root]:[--rdp-accent-background-color:#F4F1FF]! [&_.rdp-root]:[--rdp-accent-color:#6C4CF4]! [&_.rdp-root]:[--rdp-today-color:#6C4CF4]! [&_.rdp-root]:[--rdp-day-height:50px]! [&_.rdp-root]:[--rdp-day-width:50px]! [&_.rdp-root]:[--rdp-day_button-height:44px]! [&_.rdp-root]:[--rdp-day_button-width:44px]! [&_.rdp-day:not(.rdp-disabled):not(.rdp-outside):not(.rdp-selected)_.rdp-day\_button]:bg-[#E3F7EE]! [&_.rdp-day:not(.rdp-disabled):not(.rdp-outside):not(.rdp-selected)_.rdp-day\_button]:font-semibold! [&_.rdp-day:not(.rdp-disabled):not(.rdp-outside):not(.rdp-selected)_.rdp-day\_button]:text-[#1F9D6B]! [&_.rdp-day:not(.rdp-disabled):not(.rdp-outside):not(.rdp-selected)_.rdp-day\_button:hover]:bg-[#CDEFDD]! [&_.rdp-chevron]:fill-[#6C4CF4]! [&_.rdp-month\_caption]:font-semibold! [&_.rdp-month\_caption]:text-[#16141F]! [&_.rdp-selected_.rdp-day\_button]:border-[#6C4CF4]! [&_.rdp-selected_.rdp-day\_button]:bg-[#6C4CF4]! [&_.rdp-selected_.rdp-day\_button]:text-white!">
           <DayPicker
             locale={he}
             dir={"rtl"}
@@ -104,8 +104,8 @@ const BookAppointment = () => {
             disabled={(date) => !availableDates.has(format(date, "yyyy-MM-dd"))}
           />
           <p className="mt-3 inline-flex items-center gap-2 text-[13px] text-[#6B6880]">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#6C4CF4]"></span>
-            ימים בצבע כהה פתוחים לקביעת תור
+            <span className="h-2.5 w-2.5 rounded-full bg-[#34C98E]"></span>
+            ימים בירוק פתוחים לקביעת תור
           </p>
         </div>
 
