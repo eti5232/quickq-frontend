@@ -52,7 +52,7 @@ const MyAppointments = () => {
             </div>
 
             {myAppointments.length === 0 && (
-                <div className="rounded-[24px] border border-dashed border-[#D9D5EA] bg-white p-10 text-center">
+                <div className="rounded-[20px] border border-dashed border-[#D9D5EA] bg-white p-10 text-center">
                     <p className="text-lg font-semibold text-[#16141F]">אין תורים להצגה</p>
                     <p className="mt-1 text-[15px] text-[#6B6880]">אין תורים בקטגוריה הזו</p>
                 </div>
@@ -62,9 +62,9 @@ const MyAppointments = () => {
                 {myAppointments.map(appointment => {
                     const isLiveToday = appointment.date === new Date().toLocaleDateString("sv-SE") && (appointment.status === "BOOKED" || appointment.status === "ARRIVED" || appointment.status === "IN_PROGRESS");
                     return (
-                        <div className="overflow-hidden rounded-[24px] border border-[#EEECF4] bg-white shadow-[0_6px_20px_rgba(30,20,80,.05)] transition hover:shadow-[0_12px_28px_rgba(108,76,244,.10)]" key={appointment.id}>
+                        <div className="overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white transition hover:border-[#D9D5EA]" key={appointment.id}>
                             <div className="flex flex-col gap-5 p-5 sm:flex-row sm:items-center">
-                                <div className="shrink-0 rounded-[18px] bg-gradient-to-br from-[#F4F1FF] to-[#EAE3FF] px-6 py-4 text-center sm:min-w-[150px]">
+                                <div className="shrink-0 rounded-[14px] bg-[#F4F1FF] px-6 py-4 text-center sm:min-w-[150px]">
                                     <p className="text-[12px] font-semibold text-[#6C4CF4]">{appointment.date}</p>
                                     <p className="mt-1 text-[30px] font-bold leading-none text-[#16141F]">{appointment.time}</p>
                                 </div>

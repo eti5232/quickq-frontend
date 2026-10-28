@@ -12,12 +12,9 @@ const Profile = () => {
     const initials = user?.fullName.split(" ").map(word => word[0]).slice(0, 2).join("");
 
     return (<div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-[#6C4CF4]/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute -left-20 top-72 h-72 w-72 rounded-full bg-[#FF5D7A]/10 blur-3xl"></div>
-
         <div className="relative mx-auto w-full max-w-4xl px-5 pt-8 text-right">
-            <div className="flex flex-wrap items-center gap-5 rounded-[28px] border border-[#EEECF4] bg-white p-6 shadow-[0_10px_30px_rgba(30,20,80,.06)]">
-                <div className="grid h-[72px] w-[72px] shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#6C4CF4] to-[#8E73FF] text-[26px] font-bold text-white shadow-[0_12px_28px_rgba(108,76,244,.32)] ring-4 ring-[#F4F1FF]">{initials}</div>
+            <div className="flex flex-wrap items-center gap-5 rounded-[20px] border border-[#EEECF4] bg-white p-6">
+                <div className="grid h-[72px] w-[72px] shrink-0 place-items-center rounded-full bg-[#6C4CF4] text-[26px] font-bold text-white">{initials}</div>
                 <div className="min-w-0 flex-1">
                     <p className="text-[13px] font-semibold text-[#6C4CF4]">האיזור האישי</p>
                     <h1 className="m-0! mt-0.5! text-[28px]! font-bold! leading-tight! tracking-normal! text-[#16141F]!">{user?.fullName}</h1>
