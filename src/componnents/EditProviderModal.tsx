@@ -65,7 +65,7 @@ const EditProviderModal = ({ provider, onClose }: EditProviderModalProps) => {
         </div>
         )}
         <div className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-[#16141F]/45 p-4 backdrop-blur-sm" dir="rtl">
-            <form className="w-full max-w-lg overflow-hidden rounded-[24px] border border-[#EEECF4] bg-white text-right shadow-[0_24px_60px_rgba(30,20,80,.25)]" onSubmit={handleSubmit(onSubmit)}>
+            <form className="w-full max-w-lg overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white text-right shadow-[0_20px_50px_rgba(30,20,80,.20)]" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex items-center gap-4 border-b border-[#EEECF4] bg-[#FAFAFC] px-6 py-5">
                     <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#F4F1FF] text-[#6C4CF4]">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4z" /><path d="m13.5 6.5 4 4" /></svg>

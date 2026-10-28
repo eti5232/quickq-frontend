@@ -11,7 +11,7 @@ type CancelAppointmentProps = {
 const CancleConfirm = ({ onConfirm, onClose, isPending, title, message, cancelText, confirmText }: CancelAppointmentProps) => {
     return (
         <div className="fixed inset-0 z-50 grid place-items-center bg-[#16141F]/45 p-4 backdrop-blur-sm" dir="rtl">
-            <div className="w-full max-w-sm rounded-[28px] border border-[#EEECF4] bg-white p-7 text-center shadow-[0_24px_60px_rgba(30,20,80,.25)]">
+            <div className="w-full max-w-sm rounded-[20px] border border-[#EEECF4] bg-white p-7 text-center shadow-[0_20px_50px_rgba(30,20,80,.20)]">
                 <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-[#FDEDEF] text-[#D23B47]">
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 9v4M12 17h.01" />
