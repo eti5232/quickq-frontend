@@ -51,23 +51,20 @@ const ManageAppointments = () => {
             <ProviderChips providers={providers} selectedId={providerId} onSelect={setProviderId} />
 
             <div className="mb-6 rounded-[24px] border border-[#EEECF4] bg-white p-4 shadow-[0_6px_20px_rgba(30,20,80,.05)]">
-                <div className="grid gap-3 md:grid-cols-[1fr_auto]">
+                <div className="grid gap-3 md:grid-cols-[1fr_auto_auto]">
                     <div className="relative">
                         <svg className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#A3A0B5]" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
                         <input className="h-12 w-full rounded-[14px] border border-transparent bg-[#FAFAFC] pr-12 pl-4 text-[15px] text-[#2B2937] outline-none transition placeholder:text-[#A3A0B5] focus:border-[#6C4CF4] focus:bg-white focus:ring-4 focus:ring-[#6C4CF4]/10" type="text" aria-label="חיפוש תורים לפי שם, טלפון או תעודת זהות" placeholder="חיפוש לפי שם, טלפון או ת״ז" value={search} onChange={e => setSearch(e.target.value)} />
                     </div>
+                    <select className="h-12 cursor-pointer rounded-[14px] border border-transparent bg-[#FAFAFC] px-4 text-[15px] font-medium text-[#2B2937] outline-none transition hover:bg-[#F4F1FF] focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10 md:w-48" aria-label="סטטוס" value={status} onChange={e => setStatus(e.target.value as AppointmentStatus | "")}>
+                        <option value="">כל הסטטוסים</option>
+                        {Object.entries(appointmentStatusLabel).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                    </select>
                     <label className="flex h-12 items-center gap-3 rounded-[14px] border border-transparent bg-[#FAFAFC] px-4 text-[14px] font-medium text-[#6B6880] transition focus-within:border-[#6C4CF4] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#6C4CF4]/10">
                         <svg className="shrink-0 text-[#A3A0B5]" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M16 3v4M8 3v4M4 11h16" /></svg>
                         תאריך
                         <input className="bg-transparent text-[15px] text-[#2B2937] outline-none" type="date" aria-label="תאריך" value={date} onChange={e => setDate(e.target.value)} />
                     </label>
-                </div>
-                <div className="mt-3 flex flex-wrap items-center gap-2">
-                    <span className="me-1 text-[13px] font-semibold text-[#A3A0B5]">סטטוס</span>
-                    <button className="h-9 rounded-full border border-[#EEECF4] bg-white px-4 text-[13px] font-semibold text-[#6B6880] transition hover:border-[#D9D5EA] hover:text-[#16141F] aria-pressed:border-[#6C4CF4] aria-pressed:bg-[#6C4CF4] aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(108,76,244,.28)]" type="button" onClick={() => setStatus("")} aria-pressed={status === ""}>הכל</button>
-                    {Object.entries(appointmentStatusLabel).map(([value, label]) => (
-                        <button className="h-9 rounded-full border border-[#EEECF4] bg-white px-4 text-[13px] font-semibold text-[#6B6880] transition hover:border-[#D9D5EA] hover:text-[#16141F] aria-pressed:border-[#6C4CF4] aria-pressed:bg-[#6C4CF4] aria-pressed:text-white aria-pressed:shadow-[0_6px_16px_rgba(108,76,244,.28)]" key={value} type="button" onClick={() => setStatus(value as AppointmentStatus)} aria-pressed={status === value}>{label}</button>
-                    ))}
                 </div>
             </div>
 
