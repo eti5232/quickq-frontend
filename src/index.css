@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Heebo', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --color-brand: #6C4CF4;
+  --color-brand-dark: #5A3DDB;
+  --color-brand-soft: #F4F1FF;
+  --color-coral: #FF5D7A;
+  --color-coral-soft: #FFF2F4;
+  --color-ink: #16141F;
+  --color-ink-soft: #2B2937;
+  --color-muted: #6B6880;
+  --color-faint: #A3A0B5;
+  --color-line: #EEECF4;
+  --color-canvas: #FAFAFC;
+
+  --animate-toast: toast-in-out 3.5s ease forwards;
+  --animate-fade-up: fade-up .55s cubic-bezier(.2, .7, .2, 1) both;
+  --animate-float: float 7s ease-in-out infinite;
+
+  @keyframes toast-in-out {
+    0% { opacity: 0; transform: translateY(-12px); }
+    8% { opacity: 1; transform: translateY(0); }
+    85% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-12px); visibility: hidden; }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-canvas);
+    color: var(--color-ink-soft);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D9D5EA transparent;
+  }
+
+  ::selection {
+    background: rgb(108 76 244 / .18);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  select:not(:disabled),
+  label:has(input[type="checkbox"]) {
+    cursor: pointer;
+  }
+
+  input[type="time"],
+  input[type="date"] {
+    color-scheme: light;
+  }
+
+  /* תפריטים נפתחים רכים (דפדפנים תומכים: Chrome 135+). בדפדפן ישן נשאר התפריט הרגיל */
+  @supports (appearance: base-select) {
+    select,
+    select::picker(select) {
+      appearance: base-select;
+    }
+
+    select::picker(select) {
+      margin-top: 8px;
+      padding: 6px;
+      border: 1px solid var(--color-line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(30, 20, 80, .16);
+    }
+
+    select {
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    select::picker-icon {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23A3A0B5' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+
+    select option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 15px;
+      color: var(--color-ink-soft);
+      transition: background-color .15s, color .15s;
+    }
+
+    select option:hover,
+    select option:focus-visible {
+      background: var(--color-brand-soft);
+      color: var(--color-brand);
+      outline: none;
+    }
+
+    select option:checked {
+      background: var(--color-brand-soft);
+      color: var(--color-brand);
+      font-weight: 600;
+    }
+
+    select option::checkmark {
+      color: var(--color-brand);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
