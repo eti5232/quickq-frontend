@@ -76,6 +76,8 @@
   input[type="time"],
   input[type="date"] {
     color-scheme: light;
+    accent-color: var(--color-brand, #6c4cf4);
+    font-family: inherit;
   }
 
   /* תפריטים נפתחים רכים (דפדפנים תומכים: Chrome 135+). בדפדפן ישן נשאר התפריט הרגיל */
