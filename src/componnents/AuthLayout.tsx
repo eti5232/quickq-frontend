@@ -20,17 +20,13 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
                 </div>
             </div>
 
-            <aside className="relative m-4 hidden overflow-hidden rounded-[32px] bg-gradient-to-br from-[#6C4CF4] via-[#7B5CF6] to-[#9B83FF] p-12 text-white lg:flex lg:flex-col lg:justify-between">
-                <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-white/10"></div>
-                <div className="pointer-events-none absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-[#FF5D7A]/25"></div>
-                <div className="pointer-events-none absolute left-1/3 top-1/2 h-40 w-40 rounded-full border border-white/20"></div>
-
-                <div className="relative grid h-16 w-16 place-items-center rounded-[20px] bg-white shadow-[0_14px_34px_rgba(30,20,80,.30)]">
+            <aside className="relative m-4 hidden overflow-hidden rounded-[20px] bg-[#6C4CF4] p-12 text-white lg:flex lg:flex-col lg:justify-between">
+                <div className="relative grid h-16 w-16 place-items-center rounded-[16px] bg-white">
                     <img className="h-9 w-auto" src={mark} alt="QuickQ" />
                 </div>
 
                 <div className="relative">
-                    <h2 className="m-0 text-[44px] font-bold leading-[1.1] tracking-normal text-white">
+                    <h2 className="m-0 text-[40px] font-bold leading-[1.15] tracking-normal text-white">
                         מחכים פחות.
                         <br />
                         <span className="text-[#FFD3DC]">מגיעים בדיוק בזמן.</span>
