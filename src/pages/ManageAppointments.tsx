@@ -43,24 +43,24 @@ const ManageAppointments = () => {
                     <h1 className="m-0! text-[32px]! font-bold! leading-tight! tracking-normal! text-[#16141F]!">יומן תורים</h1>
                     <p className="mt-1 text-[15px] text-[#6B6880]">בחר איש מקצוע כדי לראות את התורים שלו</p>
                 </div>
-                <p className="rounded-full bg-white px-4 py-2 text-[14px] text-[#6B6880] shadow-[0_6px_20px_rgba(30,20,80,.05)] ring-1 ring-[#EEECF4]">
+                <p className="rounded-full border border-[#EEECF4] bg-white px-4 py-2 text-[14px] text-[#6B6880]">
                     <span className="font-bold text-[#16141F]">{queryAppointments.data?.total ?? 0}</span> תורים
                 </p>
             </div>
 
             <ProviderChips providers={providers} selectedId={providerId} onSelect={setProviderId} />
 
-            <div className="mb-6 rounded-[24px] border border-[#EEECF4] bg-white p-4 shadow-[0_6px_20px_rgba(30,20,80,.05)]">
+            <div className="mb-6 rounded-[20px] border border-[#EEECF4] bg-white p-4">
                 <div className="grid gap-3 md:grid-cols-[1fr_auto_auto]">
                     <div className="relative">
                         <svg className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#A3A0B5]" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-                        <input className="h-12 w-full rounded-[14px] border border-transparent bg-[#FAFAFC] pr-12 pl-4 text-[15px] text-[#2B2937] outline-none transition placeholder:text-[#A3A0B5] focus:border-[#6C4CF4] focus:bg-white focus:ring-4 focus:ring-[#6C4CF4]/10" type="text" aria-label="חיפוש תורים לפי שם, טלפון או תעודת זהות" placeholder="חיפוש לפי שם, טלפון או ת״ז" value={search} onChange={e => setSearch(e.target.value)} />
+                        <input className="h-12 w-full rounded-[12px] border border-transparent bg-[#FAFAFC] pr-12 pl-4 text-[15px] text-[#2B2937] outline-none transition placeholder:text-[#A3A0B5] focus:border-[#6C4CF4] focus:bg-white focus:ring-4 focus:ring-[#6C4CF4]/10" type="text" aria-label="חיפוש תורים לפי שם, טלפון או תעודת זהות" placeholder="חיפוש לפי שם, טלפון או ת״ז" value={search} onChange={e => setSearch(e.target.value)} />
                     </div>
-                    <select className="h-12 cursor-pointer rounded-[14px] border border-transparent bg-[#FAFAFC] px-4 text-[15px] font-medium text-[#2B2937] outline-none transition hover:bg-[#F4F1FF] focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10 md:w-48" aria-label="סטטוס" value={status} onChange={e => setStatus(e.target.value as AppointmentStatus | "")}>
+                    <select className="h-12 cursor-pointer rounded-[12px] border border-transparent bg-[#FAFAFC] px-4 text-[15px] font-medium text-[#2B2937] outline-none transition hover:bg-[#F4F1FF] focus:border-[#6C4CF4] focus:ring-4 focus:ring-[#6C4CF4]/10 md:w-48" aria-label="סטטוס" value={status} onChange={e => setStatus(e.target.value as AppointmentStatus | "")}>
                         <option value="">כל הסטטוסים</option>
                         {Object.entries(appointmentStatusLabel).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                     </select>
-                    <label className="flex h-12 items-center gap-3 rounded-[14px] border border-transparent bg-[#FAFAFC] px-4 text-[14px] font-medium text-[#6B6880] transition focus-within:border-[#6C4CF4] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#6C4CF4]/10">
+                    <label className="flex h-12 items-center gap-3 rounded-[12px] border border-transparent bg-[#FAFAFC] px-4 text-[14px] font-medium text-[#6B6880] transition focus-within:border-[#6C4CF4] focus-within:bg-white focus-within:ring-4 focus-within:ring-[#6C4CF4]/10">
                         <svg className="shrink-0 text-[#A3A0B5]" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M16 3v4M8 3v4M4 11h16" /></svg>
                         תאריך
                         <input className="bg-transparent text-[15px] text-[#2B2937] outline-none" type="date" aria-label="תאריך" value={date} onChange={e => setDate(e.target.value)} />
@@ -70,16 +70,16 @@ const ManageAppointments = () => {
 
             <div className={queryAppointments.isPlaceholderData ? "grid gap-4 opacity-60 transition" : "grid gap-4 transition"}>
                 {appointments?.map(appointment => (
-                    <article className="overflow-hidden rounded-[24px] border border-[#EEECF4] bg-white shadow-[0_6px_20px_rgba(30,20,80,.05)] transition hover:shadow-[0_12px_28px_rgba(108,76,244,.10)]" key={appointment.id}>
+                    <article className="overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white transition hover:border-[#D9D5EA]" key={appointment.id}>
                         <div className="flex flex-col gap-5 p-5 md:flex-row md:items-center">
-                            <div className="shrink-0 rounded-[18px] bg-gradient-to-br from-[#F4F1FF] to-[#EAE3FF] px-6 py-4 text-center md:min-w-[150px]">
+                            <div className="shrink-0 rounded-[14px] bg-[#F4F1FF] px-6 py-4 text-center md:min-w-[150px]">
                                 <p className="text-[12px] font-semibold text-[#6C4CF4]">{appointment.date}</p>
                                 <p className="mt-1 text-[30px] font-bold leading-none text-[#16141F]">{appointment.time}</p>
                                 <p className="mt-1.5 text-[11px] text-[#A3A0B5]">תור מספר {appointment.id}</p>
                             </div>
 
                             <div className="flex min-w-0 flex-1 items-start gap-4">
-                                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#FFF2F4] to-[#FFD9E0] text-[15px] font-bold text-[#E8476A]">
+                                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#FFF2F4] text-[15px] font-bold text-[#E8476A]">
                                     {appointment.client.fullName.split(" ").map(word => word[0]).slice(0, 2).join("")}
                                 </span>
                                 <div className="min-w-0">
@@ -124,7 +124,7 @@ const ManageAppointments = () => {
                 ))}
             </div>
             {appointments?.length === 0 && (
-                <div className="rounded-[24px] border border-dashed border-[#D9D5EA] bg-white px-6 py-14 text-center">
+                <div className="rounded-[20px] border border-dashed border-[#D9D5EA] bg-white px-6 py-14 text-center">
                     <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-[#F4F1FF] text-[#6C4CF4]">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="5" width="16" height="15" rx="2" /><path d="M16 3v4M8 3v4M4 11h16" /></svg>
                     </div>
