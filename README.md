@@ -1,32 +1,104 @@
-# React + TypeScript + Vite
+# QuickQ – מערכת תורים לקליניקות
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**QuickQ** ("התור החי") היא מערכת לניהול תורים בקליניקות. הלקוחה קובעת תור בכמה לחיצות, ובאיזור **התור החי** היא רואה מהבית כמה אנשים לפניה, מה העיכוב ומתי כדאי לצאת. מנהלת הקליניקה מנהלת רופאים, שעות פעילות, יומן תורים ותור יומי.
 
-Currently, two official plugins are available:
+## קישורים
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| מה | כתובת |
+|---|---|
+| האתר | https://quickq-web.onrender.com |
+| תיעוד ה-API (Swagger) | https://quickq-api-34kn.onrender.com/api-docs |
+| קוד הצד הקדמי | https://github.com/eti5232/quickq-frontend |
+| קוד השרת | https://github.com/eti5232/quickq-backend |
 
-## React Compiler
+> האתר רץ בגרסה החינמית של Render. הכניסה הראשונה אחרי זמן ללא פעילות עלולה לקחת עד כדקה, כי השרת "מתעורר".
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## פרטי התחברות להדגמה
 
-## Expanding the Oxlint configuration
+| תפקיד | אימייל | סיסמה |
+|---|---|---|
+| מנהלת קליניקה | manager@quickq.dev | Manager123! |
+| לקוחה | client@quickq.dev | Client123! |
+| לקוחה נוספת | client2@quickq.dev | Client123! |
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+אלה סיסמאות בדיקה בלבד.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+## מה אפשר לעשות במערכת
+
+**כלקוחה**
+- חיפוש קליניקות לפי שם, קטגוריה, מיון ו"פתוח עכשיו".
+- עמוד קליניקה עם אנשי המקצוע שלה.
+- קביעת תור: בחירת יום בלוח (ימים פתוחים בירוק), בחירת שעה ואישור.
+- האיזור האישי: התורים שלי (קרובים, עבר, בוטלו), ביטול תור ועדכון פרטים אישיים.
+- התור החי: המספר הנוכחי, כמה אנשים לפניי, כמה דקות עד התור ומתי לצאת מהבית.
+
+**כמנהלת קליניקה**
+- ניהול אנשי מקצוע: הוספה, עריכה והשבתה.
+- ניהול שעות פעילות לפי ימי השבוע.
+- יומן תורים לפי איש מקצוע, תאריך, סטטוס וחיפוש, כולל ביטול תור.
+- תור היום: פתיחת היום, קריאה לתור הבא, סימון הגעה, התחלה וסיום טיפול, השהיה וסגירה.
+
+## טכנולוגיות
+
+| שכבה | טכנולוגיה |
+|---|---|
+| צד קדמי | React, TypeScript, Vite, Tailwind CSS 4, React Router, TanStack React Query, React Hook Form, axios, DayPicker (`@daypicker/react`) |
+| שרת | Node.js 22, Express 5, TypeScript, Zod, JWT, bcrypt |
+| מסד נתונים | PostgreSQL (Neon) עם Prisma ORM |
+| תיעוד | OpenAPI 3 + Swagger UI |
+| פריסה | Render (Blueprint, קובץ `render.yaml` בכל פרויקט) ו-GitHub |
+
+## מבנה הפרויקט
+
+```
+QuickQ-project/
+├── frontend-project/   # אפליקציית React
+│   └── src/
+│       ├── api/          # קריאות לשרת (axios)
+│       ├── hooks/        # React Query + לוגיקה משותפת
+│       ├── pages/        # המסכים
+│       ├── componnents/  # רכיבים משותפים
+│       ├── context/      # משתמשת מחוברת
+│       ├── types/        # טיפוסים
+│       └── utils/        # עזרים ותוויות
+└── backend-project/    # שרת Express
+    ├── src/modules/      # auth, clinics, providers, appointments, manage, admin ועוד
+    ├── prisma/           # schema, migrations, seed
+    └── tests/            # בדיקות אוטומטיות
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## ה-API
+
+בשרת **59 endpoints**, מתוכם **26** בשימוש בצד הקדמי. הם מחולקים לקבוצות: `auth`, `clinics`, `providers`, `appointments`, `manage` (מנהלת קליניקה), `admin`, `join-requests`, `jobs` ו-`health`. הרשימה המלאה עם דוגמאות נמצאת ב-Swagger.
+
+## הערות
+
+- **מיילים:** הקוד לשליחת תזכורות ואישורים קיים, אבל Render בגרסה החינמית חוסם שליחת SMTP, ולכן באתר שבענן המיילים לא נשלחים.
+- **סופר אדמין:** ה-API קיים, אבל אין לו מסכים בצד הקדמי.
+
+## הרחבות אפשריות לגרסה רחבה יותר
+
+### יכולות שכבר קיימות בשרת וחסרים להן מסכים
+- **סופר אדמין:** אישור או דחיית בקשות הצטרפות של קליניקות, יצירה ועריכה של קליניקות, וניהול משתמשים כולל איפוס סיסמה.
+- **היעדרויות וחופשות:** סימון חופשה של איש מקצוע או סגירת קליניקה בימי חג, כדי שימים אלה ייחסמו בלוח הקביעה.
+- **ייבוא תורים מקובץ CSV:** מעבר קל של קליניקה קיימת למערכת, כולל קובץ תבנית להורדה.
+- **ניהול צוות ולקוחות:** הוספת מזכירות עם הרשאות מוגבלות, ועריכת פרטי לקוחות על ידי המנהלת.
+- **קביעת תור על ידי המנהלת:** הזמנת תור ללקוחה שהתקשרה, ישירות מהיומן.
+- **שינוי מועד של תור קיים** בצד הלקוחה, בלי לבטל ולקבוע מחדש.
+- **שכחתי סיסמה ושינוי סיסמה:** מסכים לזרימות שכבר קיימות ב-API.
+
+### תכונות חדשות
+- **תזכורות בהודעה:** SMS או WhatsApp בנוסף למייל, והעברת שליחת המיילים לשירות עם API (Brevo, Resend ועוד), כי Render חוסם SMTP בגרסה החינמית.
+- **רשימת המתנה:** אם שעה התפנתה בגלל ביטול, ההודעה נשלחת ללקוחות שחיכו לה.
+- **תורים חוזרים:** למשל טיפולים שבועיים או מעקב תקופתי.
+- **סוגי טיפול:** משך תור וזמן שונה לכל טיפול, ולא משך אחד לכל איש מקצוע.
+- **דירוגים וביקורות** של לקוחות על קליניקות ואנשי מקצוע.
+- **סינון לפי מיקום:** מפה וחיפוש לפי קרבה למיקום הלקוחה.
+- **תשלום מקוון** או מקדמה בעת קביעת התור.
+- **סנכרון ליומן:** הוספת התור ל-Google Calendar או ל-iCal.
+- **דוחות וסטטיסטיקות למנהלת:** אי-הגעות, ביטולים, שעות עומס וזמן המתנה ממוצע.
+- **תמיכה בכמה שפות:** עברית, ערבית, אנגלית ורוסית.
+
+### שיפורים טכניים
+- **אפליקציה להתקנה (PWA)** עם התראות Push בטלפון.
+
