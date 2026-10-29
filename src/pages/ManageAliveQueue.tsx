@@ -19,7 +19,7 @@ const ManageAliveQueue = () => {
     return (<div className="mx-auto w-full max-w-5xl px-5 pb-10 pt-8 text-right">
         <div className="mb-1 text-[28px] font-bold leading-tight text-[#16141F]">תור היום</div>
         <div className="mb-5 text-[15px] text-[#6B6880]">ניהול התור של היום, לפי איש מקצוע</div>
-        <ProviderChips providers={providers} selectedId={providerId} onSelect={setProviderId} />
+        <ProviderChips providers={providers?.filter(p => p.isActive)} selectedId={providerId} onSelect={setProviderId} />
         {queryQueue.isError && <p className="mb-4 rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-sm text-[#D23B47]">אירעה שגיאה בעת טעינת התור...</p>}
         {queryQueue.isLoading && <p className="py-10 text-center text-[#6B6880]">טוען את התור...</p>}
 
@@ -40,7 +40,7 @@ const ManageAliveQueue = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
-                    {queue.appointments.length > 0 && <>
+                    <>
                         {
                             queue.dayStatus === "NOT_OPENED" && (
                                 <button className="inline-flex h-11 cursor-pointer items-center rounded-[14px] bg-[#6C4CF4] px-6 text-[15px] font-semibold text-white shadow-[0_8px_20px_rgba(108,76,244,.28)] transition hover:bg-[#5A3DDB] disabled:cursor-not-allowed disabled:opacity-60" type="button" onClick={() => open.mutate()} disabled={open.isPending}>פתיחת יום</button>
@@ -60,7 +60,7 @@ const ManageAliveQueue = () => {
                             <button className="inline-flex h-11 cursor-pointer items-center rounded-[14px] border border-[#E3E0EE] bg-white px-5 text-[15px] font-semibold text-[#2B2937] transition hover:border-[#6C4CF4] hover:bg-[#F4F1FF] hover:text-[#6C4CF4] disabled:cursor-not-allowed disabled:opacity-50" type="button" onClick={() => open.mutate()} disabled={open.isPending}>פתיחה מחדש</button>
                         </>}
                         {queue.dayStatus === "NO_SERVICE_TODAY" && <p className="text-[15px] font-semibold text-[#A3A0B5]">הקליניקה אינה מספקת שירות היום</p>}
-                    </>}
+                    </>
                 </div>
             </div>
             {(open.isError || next.isError || changeStatus.isError || pause.isError || resume.isError || close.isError) && <p className="mb-4 rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-sm text-[#D23B47]" role="alert">הפעולה נכשלה, נסה שוב</p>}
