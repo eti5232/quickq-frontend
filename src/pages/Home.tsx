@@ -4,9 +4,6 @@ import mark from "../assets/quickqMark.png";
 const Home = () => {
     return (<>
         <div className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden bg-[#FAFAFC] px-4 py-6 text-center">
-            <div className="pointer-events-none absolute -right-28 -top-28 h-80 w-80 rounded-full bg-[#6C4CF4]/10"></div>
-            <div className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-[#FF5D7A]/10"></div>
-
             <div className="relative flex h-[260px] w-[260px] items-center justify-center sm:h-[min(480px,48vh)] sm:w-[min(480px,48vh)] sm:min-h-[300px] sm:min-w-[300px]">
                 <span className="absolute inset-[6%] rounded-full border border-[#6C4CF4]/20"></span>
                 <span className="absolute inset-[12.5%] rounded-full border border-[#FF5D7A]/25"></span>

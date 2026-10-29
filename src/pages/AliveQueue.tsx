@@ -20,9 +20,6 @@ const AliveQueue = () => {
     if (aliveQueue.dayStatus === "NO_SERVICE_TODAY")
         return <p className="mx-auto my-24 w-full max-w-md rounded-[20px] border border-[#EEECF4] bg-white px-6 py-10 text-center text-lg font-semibold text-[#16141F]">איש המקצוע אינו מקבל היום</p>
     return (<div className="relative overflow-hidden lg:h-[calc(100dvh-4rem)]">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[#6C4CF4]/10 blur-3xl"></div>
-        <div className="pointer-events-none absolute -left-24 top-40 h-96 w-96 rounded-full bg-[#FF5D7A]/10 blur-3xl"></div>
-
         <div className="relative mx-auto flex h-full w-full max-w-6xl flex-col px-5 pb-5 pt-5 text-right">
             <div className="mb-4 flex shrink-0 flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-4">
