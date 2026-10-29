@@ -4,7 +4,8 @@ import { getProvidersAppointment } from "../api/manageApi";
 const useProviderAppointment = () => {
     const query = useQuery({
         queryKey: ["manageProviders"],
-        queryFn: getProvidersAppointment
+        queryFn: getProvidersAppointment,
+        staleTime: 30_000
     });
 
     return query;
