@@ -3,6 +3,8 @@ import type { UpdateMeRequest } from "../types/auth";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
 import useUpdateMe from "../hooks/useUpdateMe";
+import { isValidPhone } from "../utils/validation";
+import { getErrorMessages } from "../utils/apiErrors";
 
 const inputClass = "h-[52px] w-full rounded-[14px] border border-[#EEECF4] bg-[#FAFAFC] px-4 text-base text-[#2B2937] outline-none transition placeholder:text-[#A3A0B5] focus:border-[#6C4CF4] focus:bg-white focus:ring-4 focus:ring-[#6C4CF4]/10";
 const labelClass = "mb-1.5 block text-sm font-medium text-[#2B2937]";
@@ -46,7 +48,8 @@ const ProfileDetails = () => {
                 <div>
                     <label className={labelClass} htmlFor="phone">פלאפון</label>
                     <input className={inputClass} id="phone" {...register("phone", {
-                        required: "פלאפון הוא שדה חובה"
+                        required: "פלאפון הוא שדה חובה",
+                        validate: v => isValidPhone(v) || "מספר טלפון לא תקין (לדוגמה 0501234567)"
                     })} />
                     {errors.phone && <p className="mt-1.5 text-sm text-[#D23B47]">{errors.phone.message}</p>}
                 </div>
@@ -77,7 +80,7 @@ const ProfileDetails = () => {
                 </div>
             </div>
 
-            {mutation.isError && <p className="mx-7 mb-4 rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-sm text-[#D23B47]">{mutation.error.response?.data?.error?.message ?? "לא ניתן לשמור את הפרטים כרגע"}</p>}
+            {mutation.isError && <p className="mx-7 mb-4 rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-sm text-[#D23B47]">{getErrorMessages(mutation.error, "לא ניתן לשמור את הפרטים כרגע").join(" • ")}</p>}
             <div className="flex items-center justify-end border-t border-[#EEECF4] px-7 py-4">
                 <button className="h-11 rounded-[12px] bg-[#6C4CF4] px-9 text-[15px] font-semibold text-white shadow-[0_8px_20px_rgba(108,76,244,.25)] transition hover:bg-[#5A3DDB] disabled:cursor-not-allowed disabled:opacity-60" type="submit" disabled={mutation.isPending}>{mutation.isPending ? "שומר..." : "שמירה"}</button>
             </div>
