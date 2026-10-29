@@ -73,9 +73,9 @@ const BookingConfirm = () => {
   if (appointmentCreated) {
     return (
       <div className="mx-auto my-10 w-full max-w-md px-5 text-right">
-        <div className="overflow-hidden rounded-[28px] border border-[#EEECF4] bg-white shadow-[0_16px_40px_rgba(30,20,80,.08)]">
-          <div className="flex flex-col items-center bg-gradient-to-b from-[#EAF7EF] to-white px-6 pb-5 pt-8 text-center">
-            <span className="grid h-16 w-16 place-items-center rounded-full bg-[#1E9E5A] text-white shadow-[0_10px_24px_rgba(30,158,90,.35)]">
+        <div className="overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white">
+          <div className="flex flex-col items-center bg-[#EAF7EF] px-6 pb-5 pt-8 text-center">
+            <span className="grid h-16 w-16 place-items-center rounded-full bg-[#1E9E5A] text-white">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m5 12 5 5L20 7" />
               </svg>
@@ -138,10 +138,10 @@ const BookingConfirm = () => {
       <div className="mb-6 text-[15px] text-[#6B6880]">בדקי את הפרטים לפני השמירה</div>
 
       <form className="grid items-start gap-6 md:grid-cols-5" onSubmit={handleSubmit(onSubmit)}>
-        <div className="relative overflow-hidden rounded-[28px] border border-[#EEECF4] bg-white shadow-[0_16px_40px_rgba(30,20,80,.08)] md:col-span-2">
-          <div className="bg-gradient-to-br from-[#F4F1FF] to-white px-6 pb-5 pt-6">
+        <div className="relative overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white md:col-span-2">
+          <div className="bg-[#F4F1FF] px-6 pb-5 pt-6">
             <div className="flex items-center gap-3">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[16px] bg-white text-[#6C4CF4] shadow-[0_6px_16px_rgba(108,76,244,.15)]">{clinicIcon}</span>
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-white text-[#6C4CF4]">{clinicIcon}</span>
               <p className="text-[15px] text-[#6B6880]">שם הקליניקה: <span className="block text-lg font-bold leading-tight text-[#16141F]">{state.clinicName}</span></p>
             </div>
             <div className="mt-4 flex items-center gap-3">
@@ -175,7 +175,7 @@ const BookingConfirm = () => {
         </div>
 
         <div className="flex flex-col gap-4 md:col-span-3">
-          <div className="rounded-[24px] border border-[#EEECF4] bg-white p-6 shadow-[0_6px_20px_rgba(30,20,80,.05)]">
+          <div className="rounded-[20px] border border-[#EEECF4] bg-white p-6">
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-[#FFF2F4] text-[#FF5D7A]">
@@ -228,7 +228,7 @@ const BookingConfirm = () => {
           {errors.root && <p className="rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-sm text-[#D23B47]">{errors.root.message}</p>}
           {errors.root && <Link className="text-sm font-semibold text-[#6C4CF4] hover:underline" to={`/clinics/${state.clinicId}/book-appointment/${state.providerId}`} state={{ clinicName: state.clinicName, providerName: state.providerName }}>בחירת שעה אחרת</Link>}
 
-          <button className="h-14 w-full cursor-pointer rounded-[16px] bg-gradient-to-l from-[#6C4CF4] to-[#8E73FF] text-base font-semibold text-white shadow-[0_12px_28px_rgba(108,76,244,.35)] transition hover:shadow-[0_16px_34px_rgba(108,76,244,.45)] disabled:cursor-not-allowed disabled:opacity-60" type="submit" disabled={mutation.isPending}>
+          <button className="h-12 w-full cursor-pointer rounded-[12px] bg-[#6C4CF4] text-base font-semibold text-white shadow-[0_4px_12px_rgba(108,76,244,.22)] transition hover:bg-[#5A3DDB] disabled:cursor-not-allowed disabled:opacity-60" type="submit" disabled={mutation.isPending}>
             {mutation.isPending ? "...הבקשה נשלחת" : "לשמירת התור"}
           </button>
         </div>

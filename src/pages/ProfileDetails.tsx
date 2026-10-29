@@ -28,7 +28,7 @@ const ProfileDetails = () => {
     const mutation = useUpdateMe();
 
     return (<div className="mx-auto w-full max-w-4xl px-5 pb-12 pt-6 text-right">
-        <form className="overflow-hidden rounded-[28px] border border-[#EEECF4] bg-white shadow-[0_10px_30px_rgba(30,20,80,.06)]" onSubmit={handleSubmit(onSubmit)}>
+        <form className="overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white" onSubmit={handleSubmit(onSubmit)}>
             <div className="border-b border-[#EEECF4] bg-[#FAFAFC] px-7 py-5">
                 <h2 className="m-0! text-[18px]! font-bold! tracking-normal! text-[#16141F]!">הפרטים שלי</h2>
                 <p className="mt-0.5 text-[14px] text-[#6B6880]">עדכון פרטי הקשר וזמן ההגעה לקליניקה</p>

@@ -45,7 +45,7 @@ const WorkingHours = () => {
         {query.isPending && <p className="py-10 text-center text-[#6B6880]">טוען שעות עבודה...</p>}
 
         {query.data && (
-            <form className="overflow-hidden rounded-[24px] border border-[#EEECF4] bg-white shadow-[0_6px_20px_rgba(30,20,80,.05)]" onSubmit={handleSubmit(onSubmit)}>
+            <form className="overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white" onSubmit={handleSubmit(onSubmit)}>
                 <p className="flex items-center gap-2.5 border-b border-[#EEECF4] bg-[#FAFAFC] px-6 py-3.5 text-[13px] text-[#6B6880]">
                     <svg className="shrink-0 text-[#6C4CF4]" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 11v5M12 8h.01" /></svg>
                     עבור יום לא פעיל יש להשאיר ריק את שעת ההתחלה ושעת הסיום

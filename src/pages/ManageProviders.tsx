@@ -61,17 +61,15 @@ const ManageProviders = () => {
     const providers = query.data.items;
 
     return (<div className="mx-auto w-full max-w-5xl px-5 pb-10 pt-8 text-right">
-        <div className="relative mb-6 overflow-hidden rounded-[24px] bg-gradient-to-l from-[#6C4CF4] to-[#8E73FF] px-7 py-6 text-white shadow-[0_14px_34px_rgba(108,76,244,.25)]">
-            <div className="pointer-events-none absolute -left-10 -top-12 h-40 w-40 rounded-full bg-white/10"></div>
-            <div className="pointer-events-none absolute -bottom-14 left-28 h-32 w-32 rounded-full bg-white/10"></div>
+        <div className="relative mb-6">
             <div className="relative flex flex-wrap items-center justify-between gap-4">
                 <div>
-                    <h1 className="mb-1! mt-0! text-[26px]! font-bold! leading-tight! tracking-normal! text-white!">ניהול רופאים</h1>
-                    <div className="text-[15px] text-white/80">אנשי המקצוע שמקבלים תורים בקליניקה</div>
+                    <h1 className="mb-1! mt-0! text-[32px]! font-bold! leading-tight! tracking-normal! text-[#16141F]!">ניהול רופאים</h1>
+                    <div className="text-[15px] text-[#6B6880]">אנשי המקצוע שמקבלים תורים בקליניקה</div>
                 </div>
-                <Link className="group inline-flex h-12 items-center gap-3 rounded-full bg-white py-0 pe-2 ps-6 text-[15px] font-semibold text-[#6C4CF4] shadow-[0_8px_20px_rgba(30,20,80,.18)] transition hover:shadow-[0_12px_26px_rgba(30,20,80,.28)]" to="/manage/providers/create">
+                <Link className="group inline-flex h-11 items-center gap-2.5 rounded-[12px] bg-[#6C4CF4] py-0 pe-4 ps-5 text-[15px] font-semibold text-white shadow-[0_4px_12px_rgba(108,76,244,.22)] transition hover:bg-[#5A3DDB]" to="/manage/providers/create">
                     להוספת איש מקצוע
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-[#6C4CF4] text-white transition group-hover:rotate-90">
+                    <span className="grid h-6 w-6 place-items-center text-white">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M12 5v14M5 12h14" />
                         </svg>
@@ -92,7 +90,7 @@ const ManageProviders = () => {
                 <p className="text-lg font-semibold text-[#16141F]">לא נמצאו רופאים במרפאה.</p>
             </div>
         ) :
-            (<div className="overflow-hidden rounded-[24px] border border-[#EEECF4] bg-white shadow-[0_6px_20px_rgba(30,20,80,.05)]">
+            (<div className="overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white">
                 <div className="hidden grid-cols-[2.2fr_1.6fr_1.1fr_1fr_auto] gap-4 border-b border-[#EEECF4] bg-[#FAFAFC] px-7 py-3.5 text-[12px] font-semibold tracking-wide text-[#A3A0B5] md:grid">
                     <div>איש מקצוע</div>
                     <div>התמחות</div>
@@ -103,7 +101,7 @@ const ManageProviders = () => {
                 {providers.map((provider) => (
                     <article className={"grid grid-cols-1 items-center gap-2 border-b border-[#EEECF4] px-7 py-4 transition last:border-b-0 md:grid-cols-[2.2fr_1.6fr_1.1fr_1fr_auto] md:gap-4 " + (provider.isActive ? "hover:bg-[#FAFAFC]" : "bg-[#F7F7FA] [&>*:not(:last-child)]:opacity-50")} key={provider.id}>
                         <div className="flex items-center gap-3.5">
-                            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] bg-gradient-to-br from-[#F4F1FF] to-[#E6DEFF] text-[#6C4CF4]">
+                            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[12px] bg-[#F4F1FF] text-[#6C4CF4]">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M6 4H5a2 2 0 0 0-2 2v3.5a5.5 5.5 0 0 0 11 0V6a2 2 0 0 0-2-2h-1" />
                                     <path d="M8 15a6 6 0 1 0 12 0v-3" />

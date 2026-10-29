@@ -49,9 +49,9 @@ const CreateNewProvider = () => {
             </Link>
 
             {showSuccess && (<div className="fixed inset-0 z-50 grid place-items-center bg-[#16141F]/45 p-4 backdrop-blur-sm" dir="rtl">
-                <div className="relative w-full max-w-sm overflow-hidden rounded-[28px] border border-[#EEECF4] bg-white text-center shadow-[0_24px_60px_rgba(30,20,80,.25)]">
-                    <div className="bg-gradient-to-b from-[#EAF7EF] to-white px-6 pb-4 pt-9">
-                        <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#1E9E5A] text-white shadow-[0_10px_24px_rgba(30,158,90,.35)]">
+                <div className="relative w-full max-w-sm overflow-hidden rounded-[20px] border border-[#EEECF4] bg-white text-center shadow-[0_20px_50px_rgba(30,20,80,.20)]">
+                    <div className="bg-[#EAF7EF] px-6 pb-4 pt-9">
+                        <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#1E9E5A] text-white">
                             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12 5 5L20 7" /></svg>
                         </span>
                     </div>
