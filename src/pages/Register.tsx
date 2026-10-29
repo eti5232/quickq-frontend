@@ -5,6 +5,8 @@ import useRegister from "../hooks/useRegister";
 import { Link, Navigate, useNavigate } from "react-router";
 import { useContext } from "react";
 import { UserContext } from "../context/userContext";
+import { isStrongPassword, isValidNationalId, isValidPhone } from "../utils/validation";
+import { getErrorMessages } from "../utils/apiErrors";
 
 const Register = () => {
     const { register, handleSubmit, setError, formState: { errors } } = useForm<RegisterRequest>();
@@ -20,9 +22,17 @@ const Register = () => {
                 navigate("/clinics")
             },
             onError: (e) => {
+                const details = e.response?.data?.error?.details;
+                const fields = ["fullName", "email", "phone", "nationalId", "password"];
+                const fieldErrors = Array.isArray(details) ? details.filter((d: { field: string }) => fields.includes(d.field)) : [];
+                if (fieldErrors.length > 0) {
+                    fieldErrors.forEach((d: { field: string; message: string }) =>
+                        setError(d.field as keyof RegisterRequest, { type: "server", message: d.message }));
+                    return;
+                }
                 setError("root", {
                     type: "server",
-                    message: e.response?.data?.error?.message ?? "משהו השתבש"
+                    message: getErrorMessages(e).join(" • ")
                 });
             }
         });
@@ -45,9 +55,10 @@ const Register = () => {
                             id="fullName"
                             type="text"
                             placeholder="שם מלא"
-                            {...register("fullName",
-                                { required: "שם מלא הוא שדה חובה" }
-                            )}
+                            {...register("fullName", {
+                                required: "שם מלא הוא שדה חובה",
+                                minLength: { value: 2, message: "השם חייב להכיל לפחות 2 תווים" }
+                            })}
                         />
                         {errors.fullName && <p className="mt-1.5 text-sm text-[#D23B47]">{errors.fullName.message}</p>}
                     </div>
@@ -59,9 +70,10 @@ const Register = () => {
                             id="email"
                             type="email"
                             placeholder="אימייל"
-                            {...register("email",
-                                { required: "אימייל הוא שדה חובה" }
-                            )}
+                            {...register("email", {
+                                required: "אימייל הוא שדה חובה",
+                                pattern: { value: /^\S+@\S+\.\S+$/, message: "כתובת מייל לא תקינה" }
+                            })}
                         />
                         {errors.email && <p className="mt-1.5 text-sm text-[#D23B47]">{errors.email.message}</p>}
                     </div>
@@ -74,9 +86,10 @@ const Register = () => {
                                 id="phone"
                                 type="text"
                                 placeholder="פלאפון"
-                                {...register("phone",
-                                    { required: "פלאפון הוא שדה חובה" }
-                                )}
+                                {...register("phone", {
+                                    required: "פלאפון הוא שדה חובה",
+                                    validate: v => isValidPhone(v) || "מספר טלפון לא תקין (לדוגמה 0501234567)"
+                                })}
                             />
                             {errors.phone && <p className="mt-1.5 text-sm text-[#D23B47]">{errors.phone.message}</p>}
                         </div>
@@ -88,9 +101,10 @@ const Register = () => {
                                 id="nationalId"
                                 type="text"
                                 placeholder="ת.ז."
-                                {...register("nationalId",
-                                    { required: "ת.ז. היא שדה חובה" }
-                                )}
+                                {...register("nationalId", {
+                                    required: "ת.ז. היא שדה חובה",
+                                    validate: v => isValidNationalId(v) || "מספר תעודת זהות לא תקין"
+                                })}
                             />
                             {errors.nationalId && <p className="mt-1.5 text-sm text-[#D23B47]">{errors.nationalId.message}</p>}
                         </div>
@@ -103,9 +117,11 @@ const Register = () => {
                             id="password"
                             type="password"
                             placeholder="סיסמה"
-                            {...register("password",
-                                { required: "סיסמה היא שדה חובה" }
-                            )}
+                            {...register("password", {
+                                required: "סיסמה היא שדה חובה",
+                                minLength: { value: 8, message: "הסיסמה חייבת להכיל לפחות 8 תווים" },
+                                validate: v => isStrongPassword(v) || "הסיסמה חייבת להכיל אות באנגלית וספרה"
+                            })}
                         />
                         {errors.password && <p className="mt-1.5 text-sm text-[#D23B47]">{errors.password.message}</p>}
                     </div>

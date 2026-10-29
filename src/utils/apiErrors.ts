@@ -15,3 +15,13 @@ export const getFutureAppointmentsCount = (error: unknown): number | null => {
 
     return null;
 };
+type ApiErrorLike = {
+    response?: { data?: { error?: { message?: string; details?: unknown } } };
+};
+
+export const getErrorMessages = (e: ApiErrorLike, fallback = "משהו השתבש") => {
+    const details = e.response?.data?.error?.details;
+    if (Array.isArray(details) && details.length > 0)
+        return details.map((d: { message: string }) => d.message);
+    return [e.response?.data?.error?.message ?? fallback];
+};
