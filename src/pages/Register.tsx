@@ -2,13 +2,17 @@ import AuthLayout from "../componnents/AuthLayout";
 import { useForm } from "react-hook-form"
 import type { RegisterRequest } from "../types/auth"
 import useRegister from "../hooks/useRegister";
-import { Link, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
+import { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
 const Register = () => {
     const { register, handleSubmit, setError, formState: { errors } } = useForm<RegisterRequest>();
 
     const mutation = useRegister();
     const navigate = useNavigate();
+    const user = useContext(UserContext)?.user;
+    if (user) return <Navigate to={user.role === "CLIENT" ? "/clinics" : "/manage/alive-queue"} replace />
 
     const onSubmit = (registerData: RegisterRequest) => {
         mutation.mutate(registerData, {
@@ -30,7 +34,7 @@ const Register = () => {
                     className="w-full max-w-[440px] rounded-[24px] border border-[#EEECF4] bg-white p-8 text-right shadow-[0_6px_20px_rgba(30,20,80,.05)]"
                     onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-7">
-                        <div className="text-[26px] font-bold text-[#16141F]">יוצרים חשבון</div>
+                        <h1 className="m-0! text-[26px]! font-bold! tracking-normal! text-[#16141F]!">יוצרים חשבון</h1>
                         <div className="mt-1 text-[15px] text-[#6B6880]">כמה פרטים ואפשר לקבוע תור</div>
                     </div>
 
