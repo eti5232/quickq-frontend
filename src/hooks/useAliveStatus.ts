@@ -6,7 +6,8 @@ const useAliveStatus = (providerId: number|null) => {
         queryKey: ["aliveQueue", providerId],
         queryFn: () => getAliveStatus(providerId),
         enabled: providerId !== null,
-        refetchInterval: 20000
+        refetchInterval: 20000,
+        retry: (count, error) => (error as { response?: { status?: number } }).response?.status !== 404 && count < 2
     });
     return query;
 };

@@ -1,11 +1,15 @@
-import { Link, useParams } from "react-router";
+import { Link, Navigate, useParams } from "react-router";
 import useAliveStatus from "../hooks/useAliveStatus";
 import { dayStatusLabel, paceLabel } from "../utils/formatters";
 
 const AliveQueue = () => {
     const { providerId } = useParams();
-    const query = useAliveStatus(Number(providerId));
+    const id = Number(providerId);
+    const validId = Number.isInteger(id) && id > 0;
+    const query = useAliveStatus(validId ? id : null);
 
+    if (!validId || (query.isError && (query.error as { response?: { status?: number } }).response?.status === 404))
+        return <Navigate to="/not-found" replace />
     if (query.isError)
         return <p className="mx-auto my-24 w-full max-w-md rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-center text-sm text-[#D23B47]">אירעה שגיאה בעת טעינת התור החי</p>
     if (query.isPending)
