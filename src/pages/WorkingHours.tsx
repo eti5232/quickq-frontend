@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import ProviderChips from "../componnents/ProviderChips";
 import useSaveWorkingHours from "../hooks/useSaveWorkingHours";
@@ -20,8 +21,13 @@ const WorkingHours = () => {
         }
     });
 
+    const [incomplete, setIncomplete] = useState<string[]>([]);
+
     const onSubmit = (values: WorkingHoursFormValues) => {
-        const hours = values.days.flatMap((day, index) => day.startTime && day.endTime ? [{ dayOfWeek: index, ...day }] : []);
+        const missing = values.days.flatMap((day, index) => (!!day.startTime !== !!day.endTime) ? [dayNames[index]] : []);
+        setIncomplete(missing);
+        if (missing.length > 0) return;
+        const hours =values.days.flatMap((day, index) => day.startTime && day.endTime ? [{ dayOfWeek: index, ...day }] : []);
         save.mutate({ hours });
     }
 
@@ -33,7 +39,7 @@ const WorkingHours = () => {
     return (<div className="mx-auto w-full max-w-4xl px-5 pb-8 pt-6 text-right">
         <div className="mb-1 text-[28px] font-bold leading-tight text-[#16141F]">שעות פעילות</div>
         <div className="mb-5 text-[15px] text-[#6B6880]">הגדרת הימים והשעות שבהם איש המקצוע מקבל</div>
-        <ProviderChips providers={providers} selectedId={providerId} onSelect={(id) => (setProviderId(id), save.reset())} />
+        <ProviderChips providers={providers?.filter(p => p.isActive)} selectedId={providerId} onSelect={(id) => (setProviderId(id), save.reset())} />
 
         {query.isError && <p className="mb-4 rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-sm text-[#D23B47]">שגיאה בטעינת שעות העבודה</p>}
         {query.isPending && <p className="py-10 text-center text-[#6B6880]">טוען שעות עבודה...</p>}
@@ -58,6 +64,7 @@ const WorkingHours = () => {
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#EEECF4] px-6 py-4">
                     <div className="flex min-w-0 flex-1 flex-col gap-2">
+                        {incomplete.length > 0 && <p className="rounded-[12px] bg-[#FDEDEF] px-4 py-2.5 text-[13px] text-[#D23B47]" role="alert">יש למלא גם שעת התחלה וגם שעת סיום ב: {incomplete.join(", ")}</p>}
                         {save.data?.warning && <p className="rounded-[12px] bg-[#FFF5E3] px-4 py-2.5 text-[13px] text-[#C27A0E]">{save.data.warning.message}</p>}
                         {save.isError && <p className="rounded-[12px] bg-[#FDEDEF] px-4 py-2.5 text-[13px] text-[#D23B47]">{save.error.response?.data?.error?.message ?? "לא ניתן לשמור את השעות כרגע"}</p>}
                     </div>
