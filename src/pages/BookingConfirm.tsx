@@ -226,6 +226,7 @@ const BookingConfirm = () => {
           </div>
 
           {errors.root && <p className="rounded-[14px] bg-[#FDEDEF] px-4 py-3 text-sm text-[#D23B47]">{errors.root.message}</p>}
+          {errors.root && <Link className="text-sm font-semibold text-[#6C4CF4] hover:underline" to={`/clinics/${state.clinicId}/book-appointment/${state.providerId}`} state={{ clinicName: state.clinicName, providerName: state.providerName }}>בחירת שעה אחרת</Link>}
 
           <button className="h-14 w-full cursor-pointer rounded-[16px] bg-gradient-to-l from-[#6C4CF4] to-[#8E73FF] text-base font-semibold text-white shadow-[0_12px_28px_rgba(108,76,244,.35)] transition hover:shadow-[0_16px_34px_rgba(108,76,244,.45)] disabled:cursor-not-allowed disabled:opacity-60" type="submit" disabled={mutation.isPending}>
             {mutation.isPending ? "...הבקשה נשלחת" : "לשמירת התור"}
