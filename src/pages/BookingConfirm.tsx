@@ -6,6 +6,7 @@ import { createAppointment } from "../api/appointmentsApi";
 import type { AxiosError } from "axios";
 import type { ApiError } from "../types/api";
 import { useEffect, useState } from "react";
+import { getErrorMessages } from "../utils/apiErrors";
 
 
 const BookingConfirm = () => {
@@ -48,7 +49,7 @@ const BookingConfirm = () => {
         onError: (e) => {
           setError("root", {
             type: "server",
-            message: e.response?.data?.error?.message ?? "משהו השתבש"
+            message: getErrorMessages(e).join(" • ")
           });
         }
       });

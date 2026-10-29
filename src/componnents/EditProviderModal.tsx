@@ -3,6 +3,7 @@ import type { ManageProvider, ProviderFormValues } from "../types/manage";
 import useUpdateProvider from "../hooks/useUpdateProvider";
 import FormProviderFields from "./FormProviderFields";
 import { useEffect, useState } from "react";
+import { getErrorMessages } from "../utils/apiErrors";
 
 type EditProviderModalProps = {
     provider: ManageProvider;
@@ -47,7 +48,7 @@ const EditProviderModal = ({ provider, onClose }: EditProviderModalProps) => {
             onError: (e) => {
                 setError("root", {
                     type: "server",
-                    message: e.response?.data?.error?.message ?? "משהו השתבש"
+                    message: getErrorMessages(e).join(" • ")
                 });
             }
         });

@@ -4,6 +4,7 @@ import useCreateProvider from "../hooks/useCreateProvider";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import FormProviderFields from "../componnents/FormProviderFields";
+import { getErrorMessages } from "../utils/apiErrors";
 
 const CreateNewProvider = () => {
     const [showSuccess, setShowSuccess] = useState(false);
@@ -32,7 +33,7 @@ const CreateNewProvider = () => {
                 onError: (e) => {
                     setError("root", {
                         type: "server",
-                        message: e.response?.data?.error?.message ?? "משהו השתבש"
+                        message: getErrorMessages(e).join(" • ")
                     });
                 }
             }

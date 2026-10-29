@@ -5,6 +5,7 @@ import useSaveWorkingHours from "../hooks/useSaveWorkingHours";
 import useSelectedProvider from "../hooks/useSelectedProvider";
 import useWorkingHours from "../hooks/useWorkingHours";
 import type { WorkingHoursFormValues } from "../types/workingHours";
+import { getErrorMessages } from "../utils/apiErrors";
 
 const dayNames = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
 
@@ -66,7 +67,7 @@ const WorkingHours = () => {
                     <div className="flex min-w-0 flex-1 flex-col gap-2">
                         {incomplete.length > 0 && <p className="rounded-[12px] bg-[#FDEDEF] px-4 py-2.5 text-[13px] text-[#D23B47]" role="alert">יש למלא גם שעת התחלה וגם שעת סיום ב: {incomplete.join(", ")}</p>}
                         {save.data?.warning && <p className="rounded-[12px] bg-[#FFF5E3] px-4 py-2.5 text-[13px] text-[#C27A0E]">{save.data.warning.message}</p>}
-                        {save.isError && <p className="rounded-[12px] bg-[#FDEDEF] px-4 py-2.5 text-[13px] text-[#D23B47]">{save.error.response?.data?.error?.message ?? "לא ניתן לשמור את השעות כרגע"}</p>}
+                        {save.isError && <p className="rounded-[12px] bg-[#FDEDEF] px-4 py-2.5 text-[13px] text-[#D23B47]">{getErrorMessages(save.error, "לא ניתן לשמור את השעות כרגע").join(" • ")}</p>}
                     </div>
                     <button className="h-11 cursor-pointer rounded-[12px] bg-[#6C4CF4] px-9 text-[15px] font-semibold text-white shadow-[0_8px_20px_rgba(108,76,244,.25)] transition hover:bg-[#5A3DDB] disabled:cursor-not-allowed disabled:opacity-60" type="submit" disabled={save.isPending}>שמירה</button>
                 </div>
