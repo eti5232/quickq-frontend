@@ -20,7 +20,7 @@ const ClinicCard = ({ clinic }: ClinicCardProps) => {
     return (<>
         <article className="clinic-card group relative flex flex-col gap-4 rounded-[24px] border border-[#EEECF4] bg-white p-5 text-right shadow-[0_6px_20px_rgba(30,20,80,.05)] transition duration-300 hover:-translate-y-1 hover:border-[#D9D5EA] hover:shadow-[0_18px_40px_rgba(108,76,244,.14)]">
             <div className="flex items-start gap-4">
-                <Link to={`/clinics/${clinic.id}`} className={"relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-[18px] bg-gradient-to-br transition group-hover:scale-105 " + style.tile}>
+                <Link to={`/clinics/${clinic.id}`} aria-hidden="true" tabIndex={-1} className={"relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-[18px] bg-gradient-to-br transition group-hover:scale-105 " + style.tile}>
                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M19.5 12.6 12 20l-7.5-7.4a5 5 0 1 1 7.5-6.6 5 5 0 1 1 7.5 6.6" />
                         <path d="M7 12h2.5l1.5-2.5 2 5 1.5-2.5H17" />
